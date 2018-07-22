@@ -15,7 +15,9 @@ class Bookshelf extends React.Component {
 										.filter(book => book.shelf === bookshelf.shelf)
 										.map(book => (
 											<li key={book.id}>
-												<Book />
+												<Book 
+													book={book}
+												/>
 											</li>
 											)
 										)}

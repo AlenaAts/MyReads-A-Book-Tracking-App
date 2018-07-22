@@ -28,7 +28,9 @@ class MainPage extends React.Component {
 				<div className="list-books-content">
 					<Bookshelf 
 					bookshelves={bookshelves} 
-        			books={this.props.books}/>
+        			books={this.props.books}
+        			changeShelf={this.props.changeShelf}
+        			/>
 				</div>
 				<div className="open-search">
 					<a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>

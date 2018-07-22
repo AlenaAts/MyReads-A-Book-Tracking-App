@@ -1,19 +1,24 @@
 import React from 'react'
 import Bookshelf from './Bookshelf'
 
+
 class MainPage extends React.Component {
 	render() {
-		const bookshelfs = [
-	{
-		name: 'Currently Reading'
-	},
-	{
-		name: 'Want to Read'
-	},
-	{
-		name: 'Read'
-	}
-	]
+
+		const bookshelves = [
+		{
+			name: 'Currently Reading',
+			shelf: 'currentlyReading'
+		},
+		{
+			name: 'Want to Read',
+			shelf: 'wantToRead'
+		},
+		{
+			name: 'Read',
+			shelf: 'read'
+		}
+		]
 
 		return(
 			<div className="list-books">
@@ -21,9 +26,9 @@ class MainPage extends React.Component {
 					<h1>MyReads</h1>
 				</div>
 				<div className="list-books-content">
-					
-					<Bookshelf bookshelfs={bookshelfs} />
-					
+					<Bookshelf 
+					bookshelves={bookshelves} 
+        			books={this.props.books}/>
 				</div>
 				<div className="open-search">
 					<a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>

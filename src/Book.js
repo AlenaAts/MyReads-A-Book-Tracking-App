@@ -2,6 +2,8 @@ import React from 'react'
 
 class Book extends React.Component {
 	render() {
+
+		console.log(this.props.book.shelf)
 		return(
 			<div className="book">
 				<div className="book-top">
@@ -10,7 +12,7 @@ class Book extends React.Component {
 						<select 
 							onChange={(event) => this.props.changeShelf(
 									this.props.book, event.target.value
-								)}
+								)} defaultValue = {this.props.book.shelf}
 						>
 							<option value="move" disabled>Move to...</option>
 							<option value="currentlyReading">Currently Reading</option>

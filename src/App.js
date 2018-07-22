@@ -15,10 +15,10 @@ class BooksApp extends React.Component {
     /*showSearchPage: false
   }*/ // TODO: delete the state
 
-  state = {
-    books: []
-  }
 
+
+  state = {books: []}
+  
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
@@ -27,11 +27,11 @@ class BooksApp extends React.Component {
   }
 
   render() {
-    console.log(this.state.books)
     return (
       <div className="app">
         <Search />
-        <MainPage />
+        <MainPage 
+        books={this.state.books}/>
       </div>
      
     )

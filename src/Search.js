@@ -20,20 +20,17 @@ class Search extends React.Component {
 		/*BooksAPI.search(query).then((books) => {
 			this.setState({ books: books })
 		})*/
-
-		
 		if (query) {
-		BooksAPI.search(query).then((books) => {
-			if (books.error) {
-				this.setState({ books: [] });
-			} else {
-				this.setState({ books: books });
-			}
-		})
+			BooksAPI.search(query).then((books) => {
+				if (books.error) {
+					this.setState({ books: [] });
+				} else {
+					this.setState({ books: books });
+				}
+			})
 		} else {
 			this.setState({ books: [] })
 		}
-		
 	}
 
 	render() {
@@ -74,6 +71,7 @@ class Search extends React.Component {
 	              			<li key={book.id}>
 	              				<Book
 	              					book={book}
+	              					changeShelf={this.props.changeShelf}
 	              				/>
 	              			</li>
 	              		))}

@@ -1,5 +1,7 @@
 import React from 'react'
 import Bookshelf from './Bookshelf'
+import { Link } from 'react-router-dom'
+
 
 
 class MainPage extends React.Component {
@@ -33,7 +35,9 @@ class MainPage extends React.Component {
         			/>
 				</div>
 				<div className="open-search">
-					<a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
+					<Link
+		            	to="/search"
+		            	className="close-search"></Link>
 				</div>
 			</div>
         )

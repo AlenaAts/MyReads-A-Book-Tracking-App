@@ -1,8 +1,14 @@
 import React from 'react'
 
 class Book extends React.Component {
+
+
+
 	render() {
-		console.log(this.props.book.shelf)
+
+//let onShelves = this.props.selectedBooks.filter(element => element.id === this.props.book.id);
+
+		console.log(this.props.book.shelf/*, onShelves*/);
 		return(
 			
 			<div className="book">
@@ -14,7 +20,10 @@ class Book extends React.Component {
 							onChange={(event) => this.props.changeShelf(
 									this.props.book, event.target.value
 								)}
-							defaultValue = {this.props.book.shelf ? this.props.book.shelf : "none"}
+							defaultValue = {
+								this.props.currentShelf
+								//this.props.book.shelf ? this.props.book.shelf : "none"
+							}
 						>
 							<option value="move" disabled>Move to...</option>
 							<option value="currentlyReading">Currently Reading</option>
@@ -32,3 +41,4 @@ class Book extends React.Component {
 }
 
 export default Book
+

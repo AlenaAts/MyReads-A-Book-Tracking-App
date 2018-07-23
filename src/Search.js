@@ -19,12 +19,16 @@ class Search extends React.Component {
 	updateBooks = (query) => {
 		/*BooksAPI.search(query).then((books) => {
 			this.setState({ books: books })
-		})
+		})*/
 
-		*/
+		
 		if (query) {
 		BooksAPI.search(query).then((books) => {
-			this.setState({ books: books })
+			if (books.error) {
+				this.setState({ books: [] });
+			} else {
+				this.setState({ books: books });
+			}
 		})
 		} else {
 			this.setState({ books: [] })
@@ -37,11 +41,10 @@ class Search extends React.Component {
 
 		if (this.state.query) {
 			const match = new RegExp(escapeRegExp(this.state.query), 'i')
-			showingBooks = this.state.books.filter((book) => match.test(book.name))
+			showingBooks = this.state.books.filter((book) => match.test(book))
 		} else {
 			showingBooks = this.state.books
 		}*/
-
 		return(
 			<div className="search-books">
 	            <div className="search-books-bar">
@@ -67,10 +70,10 @@ class Search extends React.Component {
 
 	            <div className="search-books-results">
 	              	<ol className="books-grid">
-	              	{this.state.books.map(book => (
-	              			<li key={this.state.books.id}>
+	              	{this.state.books.map((book) => (
+	              			<li key={book.id}>
 	              				<Book
-	              					book={this.state.books}
+	              					book={book}
 	              				/>
 	              			</li>
 	              		))}

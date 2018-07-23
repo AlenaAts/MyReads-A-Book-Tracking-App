@@ -8,7 +8,7 @@ A bookshelf app that allows a user to select and categorize books that are read,
 
 To get started with the project:
 
-* clone or downloar the repository
+* clone or download the repository
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
 

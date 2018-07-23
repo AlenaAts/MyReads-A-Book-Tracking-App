@@ -2,18 +2,13 @@ import React from 'react'
 
 class Book extends React.Component {
 	render() {
-		/*let cover;
-		if (this.props.book.imageLinks) {
-			cover = this.props.book.imageLinks.thumbnail
-		} else { cover = ''}*/
-		/*let cover = this.props.book.imageLinks ?
-		this.props.book.imageLinks.thumbnail : '';***/
 		console.log(this.props.book.shelf)
 		return(
 			
 			<div className="book">
 				<div className="book-top">
-					<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${this.props.book.imageLinks ? this.props.book.imageLinks.thumbnail : ''}")` }}></div>
+					<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${this.props.book.imageLinks ?
+		this.props.book.imageLinks.thumbnail : ''}")` }}></div>
 					<div className="book-shelf-changer">
 						<select 
 							onChange={(event) => this.props.changeShelf(

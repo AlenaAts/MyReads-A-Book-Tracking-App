@@ -2,7 +2,6 @@ import React from 'react'
 import Book from './Book'
 import { Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
-import escapeRegExp from 'escape-string-regexp'
 
 class Search extends React.Component {
 	state = {
@@ -11,6 +10,7 @@ class Search extends React.Component {
 	}
 
 	updateQuery = (query) => {
+		console.log(query)
 		this.setState({
 			query: query
 		})
@@ -18,9 +18,6 @@ class Search extends React.Component {
 	}
 
 	updateBooks = (query) => {
-		/*BooksAPI.search(query).then((books) => {
-			this.setState({ books: books })
-		})*/
 		if (query) {
 			BooksAPI.search(query).then((books) => {
 				if (books.error) {
@@ -35,14 +32,6 @@ class Search extends React.Component {
 	}
 
 	render() {
-		/*let showingBooks
-
-		if (this.state.query) {
-			const match = new RegExp(escapeRegExp(this.state.query), 'i')
-			showingBooks = this.state.books.filter((book) => match.test(book))
-		} else {
-			showingBooks = this.state.books
-		}*/
 		return(
 			<div className="search-books">
 	            <div className="search-books-bar">
@@ -51,14 +40,6 @@ class Search extends React.Component {
 		            	className="close-search"></Link>
 
 		              	<div className="search-books-input-wrapper">
-			                {/*
-			                  NOTES: The search from BooksAPI is limited to a particular set of search terms.
-			                  You can find these search terms here:
-			                  https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
-
-			                  However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
-			                  you don't find a specific author or title. Every search is limited by search terms.
-			                */}
 			                <input 
 			                type="text"
 			                placeholder="Search by title or author"
@@ -70,14 +51,21 @@ class Search extends React.Component {
 
 	            <div className="search-books-results">
 	              	<ol className="books-grid">
-	              	{this.state.books.map((book) => (
+	              	{this.state.books.map((book) => {
+	              		let shelf;
+	              		this.props.books.map(element => (
+	              			element.id === book.id ? shelf = element.shelf : shelf="none"
+	              			));
+	              		return (
 	              			<li key={book.id}>
 	              				<Book
 	              					book={book}
 	              					changeShelf={this.props.changeShelf}
+	              					currentShelf={shelf}
 	              				/>
 	              			</li>
-	              		))}
+	              		)
+	              	})}
 	              	</ol>
 	            </div>
           </div>

@@ -14,7 +14,7 @@ class Book extends React.Component {
 							onChange={(event) => this.props.changeShelf(
 									this.props.book, event.target.value
 								)}
-							defaultValue = {this.props.book.shelf}
+							defaultValue = {this.props.book.shelf ? this.props.book.shelf : "none"}
 						>
 							<option value="move" disabled>Move to...</option>
 							<option value="currentlyReading">Currently Reading</option>

@@ -1,16 +1,9 @@
 import React from 'react'
 
 class Book extends React.Component {
-
-
-
 	render() {
-
-//let onShelves = this.props.selectedBooks.filter(element => element.id === this.props.book.id);
-
-		console.log(this.props.book.shelf/*, onShelves*/);
-		return(
-			
+		console.log(this.props.book.shelf);
+		return(	
 			<div className="book">
 				<div className="book-top">
 					<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${this.props.book.imageLinks ?
@@ -22,7 +15,6 @@ class Book extends React.Component {
 								)}
 							defaultValue = {
 								this.props.currentShelf
-								//this.props.book.shelf ? this.props.book.shelf : "none"
 							}
 						>
 							<option value="move" disabled>Move to...</option>

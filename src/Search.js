@@ -23,6 +23,10 @@ class Search extends React.Component {
 				if (books.error) {
 					this.setState({ books: [] });
 				} else {
+					books.forEach(book => {
+					   let b = this.props.books.find(Book => Book.id === book.id);
+					   book.shelf = b && b.shelf || 'none';
+					});
 					this.setState({ books: books });
 				}
 			})
@@ -52,16 +56,16 @@ class Search extends React.Component {
 	            <div className="search-books-results">
 	              	<ol className="books-grid">
 	              	{this.state.books.map((book) => {
-	              		let shelf;
+	              		/*let shelf;
 	              		this.props.books.map(element => (
 	              			element.id === book.id ? shelf = element.shelf : shelf="none"
-	              			));
+	              			));*/
 	              		return (
 	              			<li key={book.id}>
 	              				<Book
 	              					book={book}
 	              					changeShelf={this.props.changeShelf}
-	              					currentShelf={shelf}
+	              					currentShelf={book.shelf}
 	              				/>
 	              			</li>
 	              		)

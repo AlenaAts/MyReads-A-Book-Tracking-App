@@ -56,10 +56,6 @@ class Search extends React.Component {
 	            <div className="search-books-results">
 	              	<ol className="books-grid">
 	              	{this.state.books.map((book) => {
-	              		/*let shelf;
-	              		this.props.books.map(element => (
-	              			element.id === book.id ? shelf = element.shelf : shelf="none"
-	              			));*/
 	              		return (
 	              			<li key={book.id}>
 	              				<Book
